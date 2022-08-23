@@ -1,7 +1,7 @@
 {
-    "name": "detectrtc",
+    "name": "@techsee/detectrtc",
     "preferGlobal": false,
-    "version": "1.4.1",
+    "version": "1.4.2",
     "author": {
         "name": "Muaz Khan",
         "email": "muazkh@gmail.com",
@@ -10,11 +10,15 @@
     "description": "A tiny JavaScript library that can be used to detect WebRTC features e.g. system having speakers, microphone or webcam, screen capturing is supported, number of audio/video devices etc.",
     "repository": {
         "type": "git",
-        "url": "https://github.com/muaz-khan/DetectRTC.git"
+        "url": "https://github.com/TechSeeDev/techsee-detectrtc.git"
     },
     "scripts": {
         "start": "node server.js",
-        "test": "./node_modules/.bin/protractor test/browserstack.config.js"
+        "test": "./node_modules/.bin/protractor test/browserstack.config.js",
+        "clean": "rm -rf lib dist",
+        "postpublish": "npm run clean",
+        "prepublishOnly": "npm run tag",
+        "tag": "git tag v$npm_package_version -f | git push -f --tags"
     },
     "main": "DetectRTC.js",
     "types": "DetectRTC.d.ts",
