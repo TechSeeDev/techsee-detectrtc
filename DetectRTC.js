@@ -3,7 +3,7 @@
 // Last Updated On: 2022-08-24 2:02:52 PM UTC
 
 // ________________
-// DetectRTC v2.0.0
+// DetectRTC v2.0.2
 
 // Open-Sourced: https://github.com/muaz-khan/DetectRTC
 
