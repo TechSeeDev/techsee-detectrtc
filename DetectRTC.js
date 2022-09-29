@@ -3,7 +3,7 @@
 // Last Updated On: 2022-08-24 2:02:52 PM UTC
 
 // ________________
-// DetectRTC v2.0.3
+// DetectRTC v2.0.4
 
 // Open-Sourced: https://github.com/muaz-khan/DetectRTC
 
@@ -795,11 +795,19 @@
                             device.label = 'HTTPs is required to get label of this ' + device.kind + ' device.';
                         }
                     }
+                } else {
+                    // Firefox on Android still returns empty label
+                    if (device.kind === 'videoinput' && !isWebsiteHasWebcamPermissions) {
+                        isWebsiteHasWebcamPermissions = true;
+                    }
+
+                    if (device.kind === 'audioinput' && !isWebsiteHasMicrophonePermissions) {
+                        isWebsiteHasMicrophonePermissions = true;
+                    }
                 }
 
                 if (device.kind === 'audioinput') {
                     hasMicrophone = true;
-                    isWebsiteHasMicrophonePermissions = true;
 
                     if (audioInputDevices.indexOf(device) === -1) {
                         audioInputDevices.push(device);
@@ -816,7 +824,6 @@
 
                 if (device.kind === 'videoinput') {
                     hasWebcam = true;
-                    isWebsiteHasWebcamPermissions = true;
 
                     if (videoInputDevices.indexOf(device) === -1) {
                         videoInputDevices.push(device);
